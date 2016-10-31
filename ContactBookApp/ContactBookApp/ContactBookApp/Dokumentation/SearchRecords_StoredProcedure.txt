@@ -1,0 +1,26 @@
+﻿USE [ContactsDB]
+GO
+
+CREATE PROCEDURE [dbo].[SearchRecordsProcedure]
+(
+	@UserInput varchar(30)
+)
+AS
+BEGIN
+    DECLARE @query    nvarchar(1000)
+ 
+    SET @query = 'SELECT * FROM Contacts e'
+    SET @query = @query + ' WHERE 1=1'
+ 
+    IF @UserInput != ''
+        SET @query = @query + ' AND FirstName LIKE ''' + @UserInput + '%'''
+        SET @query = @query + ' OR LastName LIKE ''' + @UserInput + '%'''
+		SET @query = @query + ' OR Email LIKE ''' + @UserInput + '%'''
+        SET @query = @query + ' OR PhoneNumber LIKE ''' + @UserInput + '%'''
+        SET @query = @query + ' OR City LIKE ''' + @UserInput + '%'''
+        SET @query = @query + ' OR Street LIKE ''' + @UserInput + '%'''
+        SET @query = @query + ' OR Birthday LIKE ''' + @UserInput + '%'''
+        SET @query = @query + ' OR PostalCode LIKE ''' + @UserInput + '%'''
+
+    EXEC (@query)
+END

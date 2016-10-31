@@ -1,0 +1,13 @@
+﻿CREATE TABLE Contacts
+(
+	ContactID		int NOT NULL IDENTITY(1,1) PRIMARY KEY,	
+	FirstName		varchar(30),
+	LastName		varchar(30),
+	PhoneNumber    	varchar(30),
+	Email			varchar(30),
+	Birthday		varchar(30),
+	City			varchar(30),
+	Street			varchar(30),
+	PostalCode		varchar(30)
+)
+GO
