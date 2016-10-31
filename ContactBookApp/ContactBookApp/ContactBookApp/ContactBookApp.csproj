@@ -109,7 +109,7 @@
     <EmbeddedResource Include="View Layer\NewContactView.resx">
       <DependentUpon>NewContactView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App Settings\packages.config" />
+    <None Include="packages.config" />
     <None Include="Data Layer\packages.config">
       <SubType>Designer</SubType>
     </None>
