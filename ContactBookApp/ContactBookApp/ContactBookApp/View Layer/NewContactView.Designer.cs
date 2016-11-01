@@ -51,10 +51,10 @@ namespace ContactBookApp.View_Layer
             // 
             this.lblSearch.BackColor = System.Drawing.Color.Silver;
             this.lblSearch.ForeColor = System.Drawing.Color.Black;
-            this.lblSearch.Location = new System.Drawing.Point(14, 14);
+            this.lblSearch.Location = new System.Drawing.Point(14, 16);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(4);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(90, 26);
+            this.lblSearch.Size = new System.Drawing.Size(90, 21);
             this.lblSearch.TabIndex = 11;
             this.lblSearch.Text = "First name: ";
             this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,21 +64,20 @@ namespace ContactBookApp.View_Layer
             this.txtFirstName.BackColor = System.Drawing.Color.White;
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFirstName.Location = new System.Drawing.Point(111, 14);
+            this.txtFirstName.Location = new System.Drawing.Point(109, 16);
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFirstName.Multiline = true;
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(223, 26);
+            this.txtFirstName.Size = new System.Drawing.Size(223, 21);
             this.txtFirstName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Silver;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(14, 47);
+            this.label1.Location = new System.Drawing.Point(14, 49);
             this.label1.Margin = new System.Windows.Forms.Padding(4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 26);
+            this.label1.Size = new System.Drawing.Size(90, 21);
             this.label1.TabIndex = 12;
             this.label1.Text = "Last name: ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,11 +87,10 @@ namespace ContactBookApp.View_Layer
             this.txtLastName.BackColor = System.Drawing.Color.White;
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLastName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtLastName.Location = new System.Drawing.Point(111, 47);
+            this.txtLastName.Location = new System.Drawing.Point(109, 49);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLastName.Multiline = true;
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(223, 26);
+            this.txtLastName.Size = new System.Drawing.Size(223, 21);
             this.txtLastName.TabIndex = 2;
             // 
             // txtEmail
@@ -100,21 +98,20 @@ namespace ContactBookApp.View_Layer
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEmail.Location = new System.Drawing.Point(111, 159);
+            this.txtEmail.Location = new System.Drawing.Point(109, 161);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(223, 26);
+            this.txtEmail.Size = new System.Drawing.Size(223, 21);
             this.txtEmail.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Silver;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(14, 159);
+            this.label2.Location = new System.Drawing.Point(14, 161);
             this.label2.Margin = new System.Windows.Forms.Padding(4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 26);
+            this.label2.Size = new System.Drawing.Size(90, 21);
             this.label2.TabIndex = 16;
             this.label2.Text = "Email: ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -123,10 +120,10 @@ namespace ContactBookApp.View_Layer
             // 
             this.label3.BackColor = System.Drawing.Color.Silver;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(14, 126);
+            this.label3.Location = new System.Drawing.Point(14, 128);
             this.label3.Margin = new System.Windows.Forms.Padding(4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 26);
+            this.label3.Size = new System.Drawing.Size(90, 21);
             this.label3.TabIndex = 15;
             this.label3.Text = "Phone: ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,11 +133,10 @@ namespace ContactBookApp.View_Layer
             this.txtPhoneNumber.BackColor = System.Drawing.Color.White;
             this.txtPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPhoneNumber.Location = new System.Drawing.Point(111, 126);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(109, 128);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhoneNumber.Multiline = true;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(223, 26);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(223, 21);
             this.txtPhoneNumber.TabIndex = 4;
             // 
             // txtBirthday
@@ -148,21 +144,20 @@ namespace ContactBookApp.View_Layer
             this.txtBirthday.BackColor = System.Drawing.Color.White;
             this.txtBirthday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBirthday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBirthday.Location = new System.Drawing.Point(111, 81);
+            this.txtBirthday.Location = new System.Drawing.Point(109, 83);
             this.txtBirthday.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBirthday.Multiline = true;
             this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(223, 26);
+            this.txtBirthday.Size = new System.Drawing.Size(223, 21);
             this.txtBirthday.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Silver;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(14, 81);
+            this.label4.Location = new System.Drawing.Point(14, 83);
             this.label4.Margin = new System.Windows.Forms.Padding(4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 26);
+            this.label4.Size = new System.Drawing.Size(90, 21);
             this.label4.TabIndex = 18;
             this.label4.Text = "Birthday: ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,21 +167,20 @@ namespace ContactBookApp.View_Layer
             this.txtCity.BackColor = System.Drawing.Color.White;
             this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCity.Location = new System.Drawing.Point(111, 274);
+            this.txtCity.Location = new System.Drawing.Point(109, 276);
             this.txtCity.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCity.Multiline = true;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(223, 26);
+            this.txtCity.Size = new System.Drawing.Size(223, 21);
             this.txtCity.TabIndex = 8;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Silver;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(14, 274);
+            this.label5.Location = new System.Drawing.Point(14, 276);
             this.label5.Margin = new System.Windows.Forms.Padding(4);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 26);
+            this.label5.Size = new System.Drawing.Size(90, 21);
             this.label5.TabIndex = 24;
             this.label5.Text = "City: ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -196,21 +190,20 @@ namespace ContactBookApp.View_Layer
             this.txtPostalCode.BackColor = System.Drawing.Color.White;
             this.txtPostalCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPostalCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPostalCode.Location = new System.Drawing.Point(111, 240);
+            this.txtPostalCode.Location = new System.Drawing.Point(109, 242);
             this.txtPostalCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPostalCode.Multiline = true;
             this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(223, 26);
+            this.txtPostalCode.Size = new System.Drawing.Size(223, 21);
             this.txtPostalCode.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Silver;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(14, 240);
+            this.label6.Location = new System.Drawing.Point(14, 242);
             this.label6.Margin = new System.Windows.Forms.Padding(4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 26);
+            this.label6.Size = new System.Drawing.Size(90, 21);
             this.label6.TabIndex = 22;
             this.label6.Text = "Zip code: ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -219,10 +212,10 @@ namespace ContactBookApp.View_Layer
             // 
             this.label7.BackColor = System.Drawing.Color.Silver;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(14, 206);
+            this.label7.Location = new System.Drawing.Point(14, 208);
             this.label7.Margin = new System.Windows.Forms.Padding(4);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 26);
+            this.label7.Size = new System.Drawing.Size(90, 21);
             this.label7.TabIndex = 21;
             this.label7.Text = "Street: ";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -232,11 +225,10 @@ namespace ContactBookApp.View_Layer
             this.txtStreet.BackColor = System.Drawing.Color.White;
             this.txtStreet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStreet.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStreet.Location = new System.Drawing.Point(111, 206);
+            this.txtStreet.Location = new System.Drawing.Point(109, 208);
             this.txtStreet.Margin = new System.Windows.Forms.Padding(4);
-            this.txtStreet.Multiline = true;
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(223, 26);
+            this.txtStreet.Size = new System.Drawing.Size(223, 21);
             this.txtStreet.TabIndex = 6;
             // 
             // btnCommit
@@ -246,7 +238,7 @@ namespace ContactBookApp.View_Layer
             this.btnCommit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnCommit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnCommit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCommit.Location = new System.Drawing.Point(186, 321);
+            this.btnCommit.Location = new System.Drawing.Point(183, 321);
             this.btnCommit.Margin = new System.Windows.Forms.Padding(4, 17, 4, 4);
             this.btnCommit.Name = "btnCommit";
             this.btnCommit.Size = new System.Drawing.Size(149, 36);
