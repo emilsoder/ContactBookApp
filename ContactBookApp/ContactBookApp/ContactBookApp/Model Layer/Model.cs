@@ -19,7 +19,7 @@ namespace ContactBookApp.Model_Layer
 
                 return contactQuery.ToList();
             }
-        }        
+        }
 
         public object SearchRecords(string commandtext)
         {
@@ -28,6 +28,19 @@ namespace ContactBookApp.Model_Layer
                 return dbContext.Database.SqlQuery<Contacts>("[dbo].[SearchRecordsProcedure] @UserInput = {0} ", commandtext).ToList();
             }
         }
+
+        //public void Test(string commandText)
+        //{
+        //    using (dbContext = new ContactsDBContext())
+        //    {
+
+        //        var query = from st in dbContext.Contacts
+        //                    where st.FirstName + st.LastName == commandText
+        //                    select st;
+
+        //        var result = query.Any<Contacts>();
+        //    }
+        //}
 
         public void AddRecord(string _firstName, string _lastName, string _phoneNumber, string _email, string _birthday, string _city, string _street, string _postalCode)
         {
@@ -72,7 +85,7 @@ namespace ContactBookApp.Model_Layer
             using (dbContext = new ContactsDBContext())
             {
                 Contacts contact = dbContext.Contacts.Find(_contactID);
-                dbContext.Contacts.Remove(contact);                             
+                dbContext.Contacts.Remove(contact);
                 dbContext.SaveChanges();
             }
         }

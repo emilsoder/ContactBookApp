@@ -2,6 +2,7 @@ using System;
 using ContactBookApp.Model_Layer;
 using ContactBookApp.Presenter_Layer;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ContactBookApp.View_Layer
 {
@@ -58,7 +59,22 @@ namespace ContactBookApp.View_Layer
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             lblSearch.Visible = false;
-            presenter.Search(SearchText);
+
+            if (dgvContacts.Rows.Count <= 0)
+            {
+                MessageBox.Show("The contact book contains no contacts." + "\n" 
+                    + "You cannot search in an empty table..." + "\n" + "\n" 
+                    + "Please add new contacts to be able to search!", 
+                    "Error", MessageBoxButtons.OK);
+
+                txtSearch.Clear();
+                lblSearch.Visible = true;
+                btnAddContact.Focus();
+            }
+            else if (dgvContacts.Rows.Count > 0)
+            {
+                presenter.Search(SearchText);
+            }
         }
 
         private void MainView_Load(object sender, EventArgs e)
@@ -91,17 +107,24 @@ namespace ContactBookApp.View_Layer
 
         private void btnEditContact_Click(object sender, EventArgs e)
         {
-            try
+            if ((dgvContacts.Rows.Count <= 0) || (selectedRow < 0))
             {
-                NewContactView newContactView = new NewContactView(model, this, 2, SelectedContactID);
-                presenter.EditView(newContactView, selectedRow, firstName, lastName,
-                    birthday, phoneNumber, email, street, postalCode, city);
-
-                newContactView.ShowDialog();
+                MessageBox.Show("You have to select a contact to edit.", "Error", MessageBoxButtons.OK);
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("You have to select a row to edit!", "Error", MessageBoxButtons.OK);
+                try
+                {
+                    NewContactView newContactView = new NewContactView(model, this, 2, SelectedContactID);
+                    presenter.EditView(newContactView, selectedRow, firstName, lastName,
+                        birthday, phoneNumber, email, street, postalCode, city);
+
+                    newContactView.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -133,16 +156,16 @@ namespace ContactBookApp.View_Layer
 
         private void btnDeleteContact_Click(object sender, EventArgs e)
         {
-            if (selectedRow >= 0)
+            if ((dgvContacts.Rows.Count <= 0) || (selectedRow < 0))
+            {
+                MessageBox.Show("You have to select a contact to delete.", "Error", MessageBoxButtons.OK);
+            }
+            else
             {
                 if (MessageBox.Show("Are you sure you want to delete selected contact?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     presenter.DeleteRequest(SelectedContactID);
                 }
-            }
-            else
-            {
-                MessageBox.Show("You have to select a contact to delete.", "Error", MessageBoxButtons.OK);
             }
         }
     }
