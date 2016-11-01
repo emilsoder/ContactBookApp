@@ -8,10 +8,7 @@ namespace ContactBookApp.View_Layer
     {
         private readonly Model model;
         private readonly IMainView mainView;
-        private int DialogType;
-        private int SelectedContactID;
-
-        //_dialogType: 1 = add / 2 = edit
+         
         public NewContactView(Model _model, IMainView _mainView, int _dialogType, int _selectedContactID)
         {
             InitializeComponent();
@@ -20,7 +17,13 @@ namespace ContactBookApp.View_Layer
             DialogType = _dialogType;
             SelectedContactID = _selectedContactID;
         }
+        
+        #region Properties for passing values
+        private int DialogType;
+        private int SelectedContactID;
+        #endregion
 
+        #region On form opening
         private void NewContactView_Load(object sender, EventArgs e)
         {                
             //DialogType 1 = Add new record
@@ -34,18 +37,7 @@ namespace ContactBookApp.View_Layer
                 EditContactView();
             }
         }
-
-        private void AddContactView()
-        {
-            btnCommit.Text = "Add new contact";
-            this.Text = "New contact";
-        }
-
-        private void EditContactView()
-        {
-            btnCommit.Text = "Save changes";
-            this.Text = "Edit contact";
-        }
+        #endregion
 
         #region TextBox Properties
         public string birthday
@@ -111,14 +103,27 @@ namespace ContactBookApp.View_Layer
         }
         #endregion
 
+        #region Methods for User Interface according to DialogType Value
+        private void AddContactView()
+        {
+            btnCommit.Text = "Add new contact";
+            this.Text = "New contact";
+        }
+        private void EditContactView()
+        {
+            btnCommit.Text = "Save changes";
+            this.Text = "Edit contact";
+        }
+        #endregion
+
         private void btnCommit_Click(object sender, EventArgs e)
         {
             try
             {
-                //DialogType 1 = Add new record
-                //Call AddRecord method in Model
+                #region DialogType 1 = Add new record
                 if (DialogType == 1)
                 {
+                    //Call AddRecord method in Model
                     model.AddRecord(
                         txtFirstName.Text,
                         txtLastName.Text,
@@ -130,11 +135,12 @@ namespace ContactBookApp.View_Layer
                         txtPostalCode.Text
                         );
                 }
+                #endregion
 
-                //DialogType 2 = Edit existing record
-                //Call EditRecord method in Model
+                #region DialogType 2 = Edit existing record
                 else if (DialogType == 2)
-                {
+                {               
+                    //Call EditRecord method in Model
                     model.EditRecord(
                         SelectedContactID,
                         txtFirstName.Text,
@@ -147,18 +153,22 @@ namespace ContactBookApp.View_Layer
                         txtPostalCode.Text
                         );
                 }
+                #endregion
+
                 this.Close();
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("Something went wrong. Please try again.");
+                MessageBox.Show("Something went wrong. Please try again.");
             }
         }
 
+        #region On form closing
         private void NewContactView_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             mainView.GridViewDataSource = model.QueryResult();
             mainView.SelectCurrentRow(selectedRowIndex);
         }
+        #endregion
     }
 }

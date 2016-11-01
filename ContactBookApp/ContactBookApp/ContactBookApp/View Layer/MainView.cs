@@ -10,8 +10,6 @@ namespace ContactBookApp.View_Layer
     {
         private readonly Presenter presenter;
         private readonly Model model;
-        public int selectedRow { get; set; }
-        private int SelectedContactID { get; set; }
 
         public MainView(Model _model)
         {
@@ -19,6 +17,16 @@ namespace ContactBookApp.View_Layer
             model = _model;
             presenter = new Presenter(this, _model);
         }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+            presenter.RequestData();
+        }
+
+        #region Properties
+        private int selectedRow { get; set; }
+        private int SelectedContactID { get; set; }
+        #endregion
 
         #region IVIEW INTERFACE IMPLEMENTATION
         public object GridViewDataSource
@@ -34,7 +42,7 @@ namespace ContactBookApp.View_Layer
                 dgvContacts.Columns[0].Visible = false;
                 dgvContacts.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-           
+
         }
         public string SearchText
         {
@@ -42,6 +50,10 @@ namespace ContactBookApp.View_Layer
             {
                 return txtSearch.Text;
             }
+        }
+        public void SelectCurrentRow(int _selectedRowIndex)
+        {
+            dgvContacts.Rows[_selectedRowIndex].Selected = true;
         }
 
         public string firstName { get; set; }
@@ -52,58 +64,9 @@ namespace ContactBookApp.View_Layer
         public string postalCode { get; set; }
         public string phoneNumber { get; set; }
         public string city { get; set; }
-
         #endregion
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            lblSearch.Visible = false;
-
-            if (dgvContacts.ColumnCount <= 0)
-            {
-                MessageBox.Show("The contact book contains no contacts." + "\n" 
-                    + "You cannot search in an empty table..." + "\n" + "\n" 
-                    + "Please add new contacts to be able to search!", 
-                    "Error", MessageBoxButtons.OK);
-
-                txtSearch.Clear();
-                lblSearch.Visible = true;
-                btnAddContact.Focus();
-            }
-            else if (dgvContacts.ColumnCount > 0)
-            {
-                presenter.Search(SearchText);
-            }
-        }
-
-        private void MainView_Load(object sender, EventArgs e)
-        {
-            presenter.RequestData();
-        }
-
-        private void txtSearch_Enter(object sender, EventArgs e)
-        {
-            lblSearch.Visible = false;
-        }
-
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == "")
-                lblSearch.Visible = true;
-        }
-
-        private void btnAddContact_Click(object sender, EventArgs e)
-        {
-            NewContactView newContactView = new NewContactView(model, this, 1, 0);
-
-            newContactView.ShowDialog();
-        }
-
-        public void SelectCurrentRow(int _selectedRowIndex)
-        {
-            dgvContacts.Rows[_selectedRowIndex].Selected = true;
-        }
-
+        #region User Input: Edit, Add or Delete
         private void btnEditContact_Click(object sender, EventArgs e)
         {
             if ((dgvContacts.Rows.Count <= 0) || (selectedRow < 0))
@@ -115,8 +78,19 @@ namespace ContactBookApp.View_Layer
                 try
                 {
                     NewContactView newContactView = new NewContactView(model, this, 2, SelectedContactID);
-                    presenter.EditView(newContactView, selectedRow, firstName, lastName,
-                        birthday, phoneNumber, email, street, postalCode, city);
+
+                    presenter.EditView(
+                        newContactView,
+                        selectedRow,
+                        firstName,
+                        lastName,
+                        birthday,
+                        phoneNumber,
+                        email,
+                        street,
+                        postalCode,
+                        city
+                        );
 
                     newContactView.ShowDialog();
                 }
@@ -126,12 +100,66 @@ namespace ContactBookApp.View_Layer
                 }
             }
         }
+        private void btnAddContact_Click(object sender, EventArgs e)
+        {
+            NewContactView newContactView = new NewContactView(model, this, 1, 0);
+            newContactView.ShowDialog();
+        }
+        private void btnDeleteContact_Click(object sender, EventArgs e)
+        {
+            if ((dgvContacts.Rows.Count <= 0) || (selectedRow < 0))
+            {
+                MessageBox.Show("You have to select a contact to delete.", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to delete selected contact?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    presenter.DeleteRequest(SelectedContactID);
+                }
+            }
+        }
+        #endregion
 
+        #region Search Methods
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            lblSearch.Visible = false;
+
+            //if (dgvContacts.ColumnCount <= 0)
+            //{
+            if (GridViewDataSource == null)
+            {
+                MessageBox.Show("The contact book contains no contacts."
+                    + "\n"
+                    + "You cannot search in an empty table..."
+                    + "\n\n"
+                    + "Please add new contacts to be able to search!",
+                    "Error",
+                    MessageBoxButtons.OK);
+
+                txtSearch.Clear();
+                lblSearch.Visible = true;
+                btnAddContact.Focus();
+            }
+            else /*if (dgvContacts.ColumnCount > 0)*/
+            {
+                presenter.Search(SearchText);
+            }
+        }
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            lblSearch.Visible = false;
+        }
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+                lblSearch.Visible = true;
+        }
         private void lblSearch_Click(object sender, EventArgs e)
         {
             txtSearch.Focus();
         }
-
         private void dgvContacts_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -152,20 +180,6 @@ namespace ContactBookApp.View_Layer
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void btnDeleteContact_Click(object sender, EventArgs e)
-        {
-            if ((dgvContacts.Rows.Count <= 0) || (selectedRow < 0))
-            {
-                MessageBox.Show("You have to select a contact to delete.", "Error", MessageBoxButtons.OK);
-            }
-            else
-            {
-                if (MessageBox.Show("Are you sure you want to delete selected contact?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    presenter.DeleteRequest(SelectedContactID);
-                }
-            }
-        }
+        #endregion
     }
 }
