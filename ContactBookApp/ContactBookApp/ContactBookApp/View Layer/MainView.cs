@@ -60,7 +60,7 @@ namespace ContactBookApp.View_Layer
         {
             lblSearch.Visible = false;
 
-            if (dgvContacts.Rows.Count <= 0)
+            if (dgvContacts.ColumnCount <= 0)
             {
                 MessageBox.Show("The contact book contains no contacts." + "\n" 
                     + "You cannot search in an empty table..." + "\n" + "\n" 
@@ -71,7 +71,7 @@ namespace ContactBookApp.View_Layer
                 lblSearch.Visible = true;
                 btnAddContact.Focus();
             }
-            else if (dgvContacts.Rows.Count > 0)
+            else if (dgvContacts.ColumnCount > 0)
             {
                 presenter.Search(SearchText);
             }
