@@ -54,6 +54,7 @@ namespace ContactBookApp.Model_Layer
             using (dbContext = new ContactsDBContext())
             {
                 Contacts contact = dbContext.Contacts.Find(_contactID);
+
                 contact.FirstName = _firstName;
                 contact.LastName = _lastName;
                 contact.PhoneNumber = _phoneNumber;

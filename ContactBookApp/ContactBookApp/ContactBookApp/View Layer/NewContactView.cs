@@ -1,9 +1,10 @@
 using System;
 using ContactBookApp.Model_Layer;
+using System.Windows.Forms;
 
 namespace ContactBookApp.View_Layer
 {
-    public partial class NewContactView : Syncfusion.Windows.Forms.MetroForm
+    public partial class NewContactView : Form
     {
         private readonly Model model;
         private readonly IMainView mainView;

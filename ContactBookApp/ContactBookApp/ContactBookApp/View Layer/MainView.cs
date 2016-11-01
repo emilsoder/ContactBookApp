@@ -1,12 +1,11 @@
 using System;
 using ContactBookApp.Model_Layer;
 using ContactBookApp.Presenter_Layer;
-using Syncfusion.Windows.Forms;
 using System.Windows.Forms;
 
 namespace ContactBookApp.View_Layer
 {
-    public partial class MainView : MetroForm, IMainView
+    public partial class MainView : Form, IMainView
     {
         private readonly Presenter presenter;
         private readonly Model model;
@@ -102,7 +101,7 @@ namespace ContactBookApp.View_Layer
             }
             catch (Exception)
             {
-                MessageBoxAdv.Show("You have to select a row to edit!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("You have to select a row to edit!", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -128,7 +127,7 @@ namespace ContactBookApp.View_Layer
             }
             catch (Exception ex)
             {
-                MessageBoxAdv.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
