@@ -21,6 +21,33 @@ namespace ContactBookApp.View_Layer
             SelectedContactID = _selectedContactID;
         }
 
+        private void NewContactView_Load(object sender, EventArgs e)
+        {                
+            //DialogType 1 = Add new record
+            if (DialogType == 1)
+            {
+                AddContactView();
+            }
+            //DialogType 2 = Edit existing record
+            else if (DialogType == 2)
+            {
+                EditContactView();
+            }
+        }
+
+        private void AddContactView()
+        {
+            btnCommit.Text = "Add new contact";
+            this.Text = "New contact";
+        }
+
+        private void EditContactView()
+        {
+            btnCommit.Text = "Save changes";
+            this.Text = "Edit contact";
+        }
+
+        #region TextBox Properties
         public string birthday
         {
             set
@@ -36,7 +63,7 @@ namespace ContactBookApp.View_Layer
             }
         }
         public string phoneNumber
-        {            
+        {
             set
             {
                 txtPhoneNumber.Text = value;
@@ -82,51 +109,49 @@ namespace ContactBookApp.View_Layer
             get;
             set;
         }
-
-        private void AddContactView()
-        {
-            btnCommit.Text = "Add new contact";
-            this.Text = "New contact";
-        }
-
-        private void EditContactView()
-        {
-            btnCommit.Text = "Save changes";
-            this.Text = "Edit contact";
-        }
+        #endregion
 
         private void btnCommit_Click(object sender, EventArgs e)
         {
             try
             {
+                //DialogType 1 = Add new record
+                //Call AddRecord method in Model
                 if (DialogType == 1)
                 {
-                    model.AddRecord(txtFirstName.Text, txtLastName.Text, txtPhoneNumber.Text,
-                        txtEmail.Text, txtBirthday.Text, txtCity.Text, txtStreet.Text, txtPostalCode.Text);
+                    model.AddRecord(
+                        txtFirstName.Text,
+                        txtLastName.Text,
+                        txtPhoneNumber.Text,
+                        txtEmail.Text,
+                        txtBirthday.Text,
+                        txtCity.Text,
+                        txtStreet.Text,
+                        txtPostalCode.Text
+                        );
                 }
+
+                //DialogType 2 = Edit existing record
+                //Call EditRecord method in Model
                 else if (DialogType == 2)
                 {
-                    model.EditRecord(SelectedContactID, txtFirstName.Text, txtLastName.Text,
-                        txtPhoneNumber.Text, txtEmail.Text, txtBirthday.Text,
-                        txtCity.Text, txtStreet.Text, txtPostalCode.Text);
+                    model.EditRecord(
+                        SelectedContactID,
+                        txtFirstName.Text,
+                        txtLastName.Text,
+                        txtPhoneNumber.Text,
+                        txtEmail.Text,
+                        txtBirthday.Text,
+                        txtCity.Text,
+                        txtStreet.Text,
+                        txtPostalCode.Text
+                        );
                 }
                 this.Close();
             }
             catch (Exception)
             {
                 System.Windows.Forms.MessageBox.Show("Something went wrong. Please try again.");
-            }
-        }
-
-        private void NewContactView_Load(object sender, EventArgs e)
-        {
-            if (DialogType == 1)
-            {
-                AddContactView();
-            }
-            else if (DialogType == 2)
-            {
-                EditContactView();
             }
         }
 

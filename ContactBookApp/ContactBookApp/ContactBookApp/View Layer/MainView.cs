@@ -36,7 +36,6 @@ namespace ContactBookApp.View_Layer
             }
            
         }
-
         public string SearchText
         {
             get
